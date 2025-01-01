@@ -1,0 +1,7 @@
+flask
+tweepy
+requests
+pytrends
+pandas
+scikit-learn==1.5.2
+pickle5

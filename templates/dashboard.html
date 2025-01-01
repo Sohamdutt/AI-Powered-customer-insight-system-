@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>AI Dashboard</h1>
+    </header>
+
+    <main>
+        <section class="controls">
+            <button id="churn-btn" class="animated-btn">Get Churn Prediction</button>
+            <button id="sentiment-btn" class="animated-btn">Get Sentiment Prediction</button>
+            <button id="weather-btn" class="animated-btn">Get Weather Prediction</button>
+        </section>
+
+        <section class="charts">
+            <div class="chart-container">
+                <h2>Churn Prediction Over Time</h2>
+                <canvas id="churnChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Sentiment Analysis</h2>
+                <canvas id="sentimentChart"></canvas>
+            </div>
+        </section>
+
+        <section id="output-container">
+            <h2>Prediction Results</h2>
+            <div id="output"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AI Dashboard</p>
+    </footer>
+
+    <script src="/static/scripts.js"></script>
+    <script>
+        // Sample Chart.js implementation
+        const churnCtx = document.getElementById('churnChart').getContext('2d');
+        const churnChart = new Chart(churnCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Churn Prediction',
+                    data: [12, 19, 3, 5, 2],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true, position: 'top' }
+                }
+            }
+        });
+
+        const sentimentCtx = document.getElementById('sentimentChart').getContext('2d');
+        const sentimentChart = new Chart(sentimentCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Positive', 'Neutral', 'Negative'],
+                datasets: [{
+                    label: 'Sentiment Distribution',
+                    data: [55, 25, 20],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true, position: 'top' }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
